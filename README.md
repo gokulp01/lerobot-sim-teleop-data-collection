@@ -164,6 +164,14 @@ Each `.npz` file contains:
 - pynput >= 1.7.0 (keyboard)
 - pygame >= 2.0.0 (gamepad)
 
-## License
+> ⚠️ **BETA PREVIEW**
+> the repository is in active development. Expect **breaking changes** and **missing features** during the beta phase. 
+> contributions welcome!
 
-See LICENSE file.
+## License
+The repository is licensed under the Apache License, Version 2.0
+
+## Acknowledgments
+This work wouldn't exist without the excellent work of the [HuggingFace LeRobot](https://github.com/huggingface/lerobot) team, [MuJoCo](https://github.com/google-deepmind/mujoco) and [Viser](https://github.com/nerfstudio-project/viser). 
+
+
