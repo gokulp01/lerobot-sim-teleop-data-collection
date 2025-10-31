@@ -6,7 +6,7 @@
 ## Features
 - **Gymnasium Environment** - Gymnasium environment for LeRobot SO-100 robot (credits to [gym-lowcostrobot](https://github.com/perezjln/gym-lowcostrobot)).
 - **Multiple Control Methods** - Keyboard, game controller, or watch mode  
-- **Automatic Data Recording** - Every action saved to compressed format  
+- **Automatic Data Recording** - Every action saved to compressed format (including joint positions, actions, rewards, timestamps, and camera images)
 - **Replay System** - Review and replay collected demonstrations  
 - **Web Visualization** - Real-time 3D view via [Viser](https://viser.studio/main/)!!  
 - **6 Manipulation Tasks** - Lift, reach, push, pick-place, stack  
@@ -28,6 +28,14 @@
 </tr>
 <caption><b>Control Methods Demo (pardon my video capturing skills lol)</b></caption>
 </table>
+
+
+
+<h3 align="center">Camera Views</h3>
+<p align="center">
+  <img src="media/camera.gif" alt="Camera Views" />
+</p>
+
 
 
 ## Quick Start
@@ -62,7 +70,7 @@ Every step captures:
 - Joint commands (actions)
 - Task rewards
 - Timestamps
-- Todo: Add camera images
+- Camera images (Front + Top views, 240x320x3 RGB)
 
 ### Storage Format
 - Filename: `{env}_{method}_{timestamp}.npz`
@@ -139,19 +147,20 @@ Minus       → Exit
 ## Data Format
 
 Each `.npz` file contains:
-```python
+```
 {
     "env_name": str,
     "control_method": str,
     "num_episodes": int,
-    "episode_0_observations": ndarray,  # (steps, 6)
-    "episode_0_actions": ndarray,       # (steps, 6)
-    "episode_0_rewards": ndarray,       # (steps,)
-    "episode_0_timestamps": ndarray,    # (steps,)
+    "episode_0_observations": ndarray,     # (steps, 6) joint positions
+    "episode_0_actions": ndarray,          # (steps, 6) joint commands
+    "episode_0_rewards": ndarray,          # (steps,) rewards
+    "episode_0_timestamps": ndarray,       # (steps,) timestamps
+    "episode_0_images_front": ndarray,     # (steps, 240, 320, 3) RGB images
+    "episode_0_images_top": ndarray,       # (steps, 240, 320, 3) RGB images
     ...
 }
 ```
-
 ## Requirements
 
 - Python 3.8+
