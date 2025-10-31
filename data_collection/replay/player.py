@@ -1,4 +1,5 @@
 import time
+import numpy as np
 from ..controllers.base import BaseController
 
 
@@ -10,6 +11,7 @@ class ReplayController(BaseController):
         self.current_step_idx = 0
         self.paused = False
         self.playback_speed = 1.0
+        self.current_observation = None
         
         self.start_episode()
     
@@ -33,6 +35,12 @@ class ReplayController(BaseController):
         action = episode["actions"][self.current_step_idx]
         self.reward = float(episode["rewards"][self.current_step_idx])
         
+        if "images_front" in episode and self.current_step_idx < len(episode["images_front"]):
+            observation["image_front"] = episode["images_front"][self.current_step_idx]
+        if "images_top" in episode and self.current_step_idx < len(episode["images_top"]):
+            observation["image_top"] = episode["images_top"][self.current_step_idx]
+        
+        self.current_observation = observation
         self.current_step_idx += 1
         
         return action

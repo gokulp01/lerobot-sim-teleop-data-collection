@@ -24,7 +24,9 @@ class DataRecorder:
             "observations": [],
             "actions": [],
             "rewards": [],
-            "timestamps": []
+            "timestamps": [],
+            "images_front": [],
+            "images_top": []
         }
         self.episode_start_time = datetime.now()
     
@@ -38,6 +40,11 @@ class DataRecorder:
         self.current_episode["actions"].append(action)
         self.current_episode["rewards"].append(reward)
         self.current_episode["timestamps"].append(timestamp)
+        
+        if "image_front" in observation:
+            self.current_episode["images_front"].append(observation["image_front"])
+        if "image_top" in observation:
+            self.current_episode["images_top"].append(observation["image_top"])
     
     def end_episode(self):
         if len(self.current_episode["observations"]) > 0:
@@ -47,6 +54,12 @@ class DataRecorder:
                 "rewards": np.array(self.current_episode["rewards"]),
                 "timestamps": np.array(self.current_episode["timestamps"])
             }
+            
+            if len(self.current_episode["images_front"]) > 0:
+                episode_data["images_front"] = np.array(self.current_episode["images_front"], dtype=np.uint8)
+            if len(self.current_episode["images_top"]) > 0:
+                episode_data["images_top"] = np.array(self.current_episode["images_top"], dtype=np.uint8)
+            
             self.episodes.append(episode_data)
     
     def save(self):
@@ -72,6 +85,11 @@ class DataRecorder:
             save_dict[f"episode_{i}_actions"] = episode["actions"]
             save_dict[f"episode_{i}_rewards"] = episode["rewards"]
             save_dict[f"episode_{i}_timestamps"] = episode["timestamps"]
+            
+            if "images_front" in episode:
+                save_dict[f"episode_{i}_images_front"] = episode["images_front"]
+            if "images_top" in episode:
+                save_dict[f"episode_{i}_images_top"] = episode["images_top"]
         
         try:
             np.savez_compressed(filepath, **save_dict)

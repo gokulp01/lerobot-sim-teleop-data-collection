@@ -10,6 +10,7 @@ from .ui import show_welcome, select_environment, select_control_method, select_
 from .controllers import KeyboardController, GamepadController, WatchController
 from .recording import DataRecorder
 from .replay import list_recordings, load_recording, ReplayController
+from .camera_viewer import CameraViewer
 
 console = Console()
 
@@ -70,12 +71,14 @@ def run_collection_system():
 
 
 def _run_collection(env_name, control_method, recording_data=None):
-    env = gym.make(env_name, render_mode="human", action_mode="joint")
+    env = gym.make(env_name, render_mode="human", action_mode="joint", observation_mode="both")
     
     if hasattr(env, '_max_episode_steps'):
         env._max_episode_steps = MAX_EPISODE_STEPS
     
     observation, info = env.reset()
+    
+    camera_viewer = CameraViewer(show_front=True, show_top=True)
     
     if control_method == "replay":
         controller = ReplayController(env, recording_data)
@@ -112,6 +115,11 @@ def _run_collection(env_name, control_method, recording_data=None):
             if recorder:
                 recorder.record_step(observation, action, reward)
             
+            if hasattr(controller, 'current_observation') and controller.current_observation:
+                camera_viewer.update(controller.current_observation)
+            else:
+                camera_viewer.update(observation)
+            
             status_text = controller.get_status_text()
             layout["status"].update(Panel(status_text, border_style="green"))
             
@@ -129,6 +137,7 @@ def _run_collection(env_name, control_method, recording_data=None):
                 time.sleep(0.01)
     
     controller.cleanup()
+    camera_viewer.close()
     env.close()
     
     if recorder:
@@ -138,14 +147,24 @@ def _run_collection(env_name, control_method, recording_data=None):
         total_steps = recorder.get_total_steps()
         num_episodes = len(recorder.episodes)
         
-        console.print(f"[dim]Debug: Episodes={num_episodes}, Steps={total_steps}[/dim]")
+        has_images = False
+        if num_episodes > 0:
+            first_ep = recorder.episodes[0]
+            has_images = "images_front" in first_ep or "images_top" in first_ep
+        
+        console.print(f"[dim]Debug: Episodes={num_episodes}, Steps={total_steps}, Images={has_images}[/dim]")
         
         if num_episodes > 0 and total_steps > 0:
             filepath = recorder.save()
             if filepath:
+                import os
+                file_size_mb = os.path.getsize(filepath) / (1024 * 1024)
+                
                 console.print(f"\n[bold green]✓ Data saved:[/bold green] [cyan]{filepath.name}[/cyan]")
                 console.print(f"[dim]Location: {filepath}[/dim]")
-                console.print(f"[dim]Episodes: {num_episodes} | Total Steps: {total_steps}[/dim]")
+                console.print(f"[dim]Episodes: {num_episodes} | Steps: {total_steps} | Size: {file_size_mb:.2f} MB[/dim]")
+                if has_images:
+                    console.print(f"[dim]✓ Camera images included (Front + Top)[/dim]")
             else:
                 console.print("\n[bold red]❌ Failed to save data![/bold red]")
         else:

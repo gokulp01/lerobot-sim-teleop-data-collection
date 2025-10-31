@@ -5,7 +5,7 @@ from rich import box
 
 def create_control_panel(control_method):
     if control_method == "keyboard":
-        controls_text = """[bold cyan]⌨️  KEYBOARD CONTROLS[/bold cyan]
+        controls_text = """[bold cyan]⌨️  KEYBOARD CONTROLS[/bold cyan]  [dim](Camera: Front+Top)[/dim]
 
 [yellow]Joint Control:[/yellow]
   Q/A → Joint 1 (Shoulder pan)    W/S → Joint 2 (Shoulder lift)
@@ -15,7 +15,7 @@ def create_control_panel(control_method):
 [yellow]Special:[/yellow]  SPACE = Reset  |  ESC = Exit"""
     
     elif control_method == "controller":
-        controls_text = """[bold cyan]🎮 CONTROLLER CONTROLS[/bold cyan]
+        controls_text = """[bold cyan]🎮 CONTROLLER CONTROLS[/bold cyan]  [dim](Camera: Front+Top)[/dim]
 
 [yellow]Sticks:[/yellow]
   Left Stick → Joints 1 & 2 (Pan/Lift)

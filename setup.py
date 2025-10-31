@@ -18,5 +18,6 @@ setup(
         "pynput>=1.7.0",
         "pygame>=2.0.0",
         "rich>=13.0.0",
+        "opencv-python>=4.0.0",
     ],
 )
