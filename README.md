@@ -10,6 +10,24 @@ An interactive data collection system for robot manipulation tasks using LeRobot
 - **Web Visualization** - Real-time 3D view via [Viser](https://viser.studio/main/)!!  
 - **6 Manipulation Tasks** - Lift, reach, push, pick-place, stack  
 
+<table>
+<tr>
+<td width="50%">
+<h3 align="center">Keyboard Control</h3>
+
+https://github.com/user-attachments/assets/media/keyboard.mp4
+
+</td>
+<td width="50%">
+<h3 align="center">Game Controller</h3>
+
+https://github.com/user-attachments/assets/media/controller.mp4
+
+</td>
+</tr>
+<caption><b>Control Methods Demo (pardon my video capturing skills lol)</b></caption>
+</table>
+
 ## Quick Start
 
 ### Installation
