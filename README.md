@@ -15,14 +15,13 @@ An interactive data collection system for robot manipulation tasks using LeRobot
 <td width="50%">
 <h3 align="center">Keyboard Control</h3>
 
-https://github.com/user-attachments/assets/media/keyboard.mp4
+<video src="media/keyboard.mp4" controls></video>
 
 </td>
 <td width="50%">
 <h3 align="center">Game Controller</h3>
 
-https://github.com/user-attachments/assets/media/controller.mp4
-
+<video src="media/controller.mp4" controls></video>
 </td>
 </tr>
 <caption><b>Control Methods Demo (pardon my video capturing skills lol)</b></caption>
