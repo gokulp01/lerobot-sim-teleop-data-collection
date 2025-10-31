@@ -1,6 +1,7 @@
 # LeRobot Simulator + Data Collection System
 
-An interactive data collection system for robot manipulation tasks using LeRobot SO-100 robot.
+> Collect high-quality robot manipulation demonstrations in simulation! A complete data collection system for the SO-100 robotic manipulator. Features Viser-powered web visualization, multiple teleoperation modalities, storage, and replay capabilities. For robot learning research, behavior cloning, and human-in-the-loop data collection.
+
 
 ## Features
 - **Gymnasium Environment** - Gymnasium environment for LeRobot SO-100 robot (credits to [gym-lowcostrobot](https://github.com/perezjln/gym-lowcostrobot)).
