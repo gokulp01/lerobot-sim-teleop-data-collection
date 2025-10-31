@@ -1,0 +1,18 @@
+Metadata-Version: 2.4
+Name: gym_lowcostrobot
+Version: 0.0.1
+Summary: Low cost robot gymnasium environments
+Author: Julien Perez
+Author-email: julien.perez@epita.fr
+License-File: LICENSE
+Requires-Dist: gymnasium>=0.29
+Requires-Dist: mujoco>=3.0
+Requires-Dist: PyOpenGL==3.1.1a1
+Requires-Dist: viser>=1.0.0
+Requires-Dist: scipy>=1.0.0
+Requires-Dist: trimesh>=3.0.0
+Dynamic: author
+Dynamic: author-email
+Dynamic: license-file
+Dynamic: requires-dist
+Dynamic: summary
