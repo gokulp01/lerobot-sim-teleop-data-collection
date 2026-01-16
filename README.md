@@ -10,7 +10,7 @@
 - **Replay System** - Review and replay collected demonstrations  
 - **Web Visualization** - Real-time 3D view via [Viser](https://viser.studio/main/)!!  
 - **6 Manipulation Tasks** - Lift, reach, push, pick-place, stack  
-- **7 PDDL planning tasks** - Compatible with PDDL planners for autonomous task execution (see [pddl-lerobot-so100](pddl-lerobot-so100/README.md))
+- **PDDL planning tasks** - Compatible with PDDL planners for autonomous task execution (see [pddl-lerobot-so100](pddl-lerobot-so100/README.md))
 
 <table>
 <tr>
