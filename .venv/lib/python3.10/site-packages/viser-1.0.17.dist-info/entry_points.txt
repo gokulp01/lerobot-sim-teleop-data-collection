@@ -1,0 +1,2 @@
+[console_scripts]
+viser-build-client = viser._client_autobuild:build_client_entrypoint

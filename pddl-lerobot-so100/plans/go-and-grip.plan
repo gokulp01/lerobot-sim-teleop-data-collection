@@ -1,0 +1,4 @@
+; Plan for problem-go-and-grip.pddl
+(go-to so100 home pregrasp)
+(go-to so100 pregrasp pickup)
+(close-gripper main-gripper)

@@ -10,6 +10,7 @@
 - **Replay System** - Review and replay collected demonstrations  
 - **Web Visualization** - Real-time 3D view via [Viser](https://viser.studio/main/)!!  
 - **6 Manipulation Tasks** - Lift, reach, push, pick-place, stack  
+- **7 PDDL planning tasks** - Compatible with PDDL planners for autonomous task execution (see [pddl-lerobot-so100](pddl-lerobot-so100/README.md))
 
 <table>
 <tr>
@@ -89,6 +90,9 @@ When you run `collect_data.py`, if recordings exist:
 - Option **3** appears: "📼 Replay Recording"
 - Shows table of all recordings with dates, episodes, steps
 - Select any recording to replay in simulation
+
+## PDDL Integration
+This system is compatible with PDDL planners for autonomous task execution. See [pddl-lerobot-so100](pddl-lerobot-so100/README.md) for a detailed PDDL setup. 
 
 
 ## Architecture
@@ -181,6 +185,4 @@ Each `.npz` file contains:
 The repository is licensed under the Apache License, Version 2.0
 
 ## Acknowledgments
-This work wouldn't exist without the excellent work of the [HuggingFace LeRobot](https://github.com/huggingface/lerobot) team, [MuJoCo](https://github.com/google-deepmind/mujoco) and [Viser](https://github.com/nerfstudio-project/viser). 
-
-
+This work wouldn't exist without the excellent work of the [HuggingFace LeRobot](https://github.com/huggingface/lerobot) team, [MuJoCo](https://github.com/google-deepmind/mujoco) and [Viser](https://github.com/nerfstudio-project/viser).

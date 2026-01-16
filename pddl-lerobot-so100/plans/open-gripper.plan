@@ -1,0 +1,2 @@
+; Plan for problem-open-gripper.pddl
+(open-gripper main-gripper)

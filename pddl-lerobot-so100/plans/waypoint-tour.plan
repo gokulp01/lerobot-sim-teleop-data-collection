@@ -1,0 +1,7 @@
+; Plan for problem-waypoint-tour.pddl
+(go-to so100 home staging)
+(open-gripper main-gripper)
+(go-to so100 staging waypoint)
+(go-to so100 waypoint opposite)
+(close-gripper main-gripper)
+(go-to so100 opposite goal)
